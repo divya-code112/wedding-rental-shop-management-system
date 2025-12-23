@@ -1,10 +1,13 @@
 <?php
-function sendNotification($user_id, $message){
-    // EMAIL (basic)
-    // mail("user@email.com","Royal Drapes",$message);
+function sendEmail($to, $subject, $message){
+    $headers = "From: Royal Drapes <noreply@royaldrapes.com>";
+    mail($to, $subject, $message, $headers);
+}
 
-    // SMS PLACEHOLDER
-    // integrate Fast2SMS / Twilio here
+function sendSMS($mobile, $message){
+    // API READY (example)
+    // file_get_contents("https://smsapi.com/send?...");
 
-    return true;
+    // For now (LOG)
+    file_put_contents("../sms_log.txt", "$mobile : $message\n", FILE_APPEND);
 }
